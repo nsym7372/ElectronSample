@@ -35,6 +35,37 @@ function createWindow() {
   win.loadFile("index.html");
 }
 
+function createMenu() {
+  let menu_tmp = [
+    {
+      label: "File",
+      submenu: [
+        {
+          label: "New",
+          click: () => {
+            console.log("new clicked");
+            createWindow();
+          },
+        },
+        {
+          label: "File",
+          click: () => {
+            console.log("file clicked");
+            createWindow();
+          },
+        },
+        { role: "close", lable: "閉じる" },
+        { type: "separator" },
+        { role: "quit", label: "終了" },
+      ],
+    },
+  ];
+
+  let menu = Menu.buildFromTemplate(menu_tmp);
+  Menu.setApplicationMenu(menu);
+}
+
+createMenu();
 app.whenReady().then(createWindow);
 
 // // Electronの初期化完了後に実行
