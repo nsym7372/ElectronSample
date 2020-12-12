@@ -1,7 +1,7 @@
 "use strct";
 
-const {app, Menu, BrowserWindow} = require('electron');
-const path = require('path');
+const { app, Menu, BrowserWindow } = require("electron");
+const path = require("path");
 
 // メインウィンドウはGCされないようにグローバル宣言
 let mainWindow = null;
@@ -13,26 +13,26 @@ app.on("window-all-closed", () => {
   }
 });
 
-app.on('will-finish-launching', () => {
-  console.log('will-finish-lanching');
+app.on("will-finish-launching", () => {
+  console.log("will-finish-lanching");
 });
 
-function createWindow(){
+function createWindow() {
   win = new BrowserWindow({
     width: 400,
     height: 300,
-    webPreferences:{
+    webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-      contextIsolation: true
-    }
+      contextIsolation: true,
+    },
   });
 
-  win.on('closed', () =>{
+  win.on("closed", () => {
     win = null;
   });
 
-  win.loadFile('index.html');
+  win.loadFile("index.html");
 }
 
 app.whenReady().then(createWindow);
