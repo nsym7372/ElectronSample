@@ -18,21 +18,21 @@ app.on("will-finish-launching", () => {
 });
 
 function createWindow() {
-  win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 400,
     height: 300,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-      contextIsolation: true,
+      // contextIsolation: true,
     },
   });
 
-  win.on("closed", () => {
+  mainWindow.on("closed", () => {
     win = null;
   });
-
-  win.loadFile("index.html");
+  mainWindow.webContents.openDevTools();
+  mainWindow.loadFile("index.html");
 }
 
 function createMenu() {

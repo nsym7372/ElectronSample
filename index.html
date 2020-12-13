@@ -24,11 +24,29 @@
       </div>
       <div class="row">
         <p id="msg">hello world</p>
-        <button class="btn btn-primary" onclick="doAction();">click</button>
+        <button class="btn btn-primary" onclick="doit();">click</button>
       </div>
     </div>
 
     <script>
+      const remote = require("electron");
+      const { BrowserWindow } = remote.remote;
+
+      function doit() {
+        let win = new BrowserWindow({
+          width: 400,
+          height: 300,
+          webPreferences: {
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            // contextIsolation: true,
+          },
+        });
+        win.webContents.openDevTools();
+        win.loadFile("index.html");
+        document.querySelector("#msg").textContent = "create new window";
+      }
+
       var counter = 0;
       function doAction() {
         let p = document.querySelector("#msg");
