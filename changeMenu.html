@@ -30,23 +30,33 @@
 
     <script>
       // const BrowserWindow = window.remote.BrowserWindow;
-      const {app, BrowserWindow} = window.remote;
+      const { BrowserWindow, Menu } = window.remote;
       const path = window.path;
 
       function doit() {
-        let win = new BrowserWindow({
-          width: 400,
-          height: 300,
-          webPreferences: {
-            // nodeIntegration: true,
-            enableRemoteModule: true,
-            // contextIsolation: true,
-            
+        let menu_temp = [
+          {
+            label: "New Menu",
+            submenu: [
+              {
+                label: "new",
+                click: () => {
+                  console.log("new menu");
+                },
+              },
+              { role: "close" },
+              { type: "separator" },
+              { role: "quit" },
+            ],
           },
-        });
-        win.webContents.openDevTools();
-        win.loadFile("index.html");
-        document.querySelector("#msg").textContent = "create new window";
+        ];
+
+        let menu = Menu.buildFromTemplate(menu_temp);
+        Menu.setApplicationMenu(menu);
+
+        alert("change menubar");
+        // document.querySelector("#msg").innerHTML = res;
+        // document.querySelector("#msg").textContent = "create new window";
       }
 
       var counter = 0;

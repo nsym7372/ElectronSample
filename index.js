@@ -33,7 +33,8 @@ function createWindow() {
     win = null;
   });
   mainWindow.webContents.openDevTools();
-  mainWindow.loadFile("index.html");
+  // mainWindow.loadFile("openWindow.html");
+  mainWindow.loadFile("changeMenu.html");
 }
 
 function createMenu() {
