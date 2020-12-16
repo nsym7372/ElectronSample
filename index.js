@@ -22,10 +22,10 @@ function createWindow() {
     width: 400,
     height: 300,
     webPreferences: {
-      // nodeIntegration: true,
+      nodeIntegration: true,
       enableRemoteModule: true,
       // contextIsolation: true,
-      preload: path.join(app.getAppPath(), "preload.js"),
+      //preload: path.join(app.getAppPath(), "preload.js"),
     },
   });
 
@@ -33,8 +33,8 @@ function createWindow() {
     win = null;
   });
   mainWindow.webContents.openDevTools();
-  // mainWindow.loadFile("openWindow.html");
-  mainWindow.loadFile("changeMenu.html");
+  mainWindow.loadFile("spawnTest.html");
+  //mainWindow.loadFile("changeMenu.html");
 }
 
 function createMenu() {
