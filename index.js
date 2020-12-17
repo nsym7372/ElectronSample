@@ -19,8 +19,8 @@ app.on("will-finish-launching", () => {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 400,
-    height: 300,
+    width: 1366,
+    height: 768,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
